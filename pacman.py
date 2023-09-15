@@ -159,7 +159,9 @@ def move():
         if abs(pacman - point) < 20:
             return
 
-    turtle.ontimer(move, 100)
+    """Schedule next timer if window is open"""
+    if turtle.Screen()._root:
+        turtle.ontimer(move, 100)
 
 
 def change(x, y):
