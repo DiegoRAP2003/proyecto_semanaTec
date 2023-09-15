@@ -161,7 +161,7 @@ def move():
 
     """Schedule next timer if window is open"""
     if turtle.Screen()._root:
-        turtle.ontimer(move, 100)
+        turtle.ontimer(move, 20)
 
 
 def change(x, y):
