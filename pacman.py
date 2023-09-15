@@ -16,8 +16,8 @@ from freegames import floor, vector
 
 
 state = {'score': 0}
-path = turtle(visible=False)
-writer = turtle(visible=False)
+path = turtle.Turtle(visible=False)
+writer = turtle.Turtle(visible=False)
 aim = vector(5, 0)
 pacman = vector(-40, -80)
 ghosts = [
@@ -112,6 +112,10 @@ def move():
     """Move pacman and all ghosts."""
     writer.undo()
     writer.write(state['score'])
+
+    """check if graphic is closed"""
+    if not turtle.Screen()._root:
+        return
 
     turtle.clear()
 
