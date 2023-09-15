@@ -1,7 +1,6 @@
 from turtle import *
 from freegames import line
 
-
 def grid():
     """Draw tic-tac-toe grid."""
     line(-67, 200, -67, -200)
@@ -9,13 +8,20 @@ def grid():
     line(-200, -67, 200, -67)
     line(-200, 67, 200, 67)
 
-
 def drawx(x, y):
     """Draw X player."""
     pencolor("red")
-    line(x, y, x + 100, y + 100)
-    line(x, y + 100, x + 100, y)
-
+    width(2)
+    center_x = x + 65  # Calcular el centro en el eje x
+    center_y = y + 65  # Calcular el centro en el eje y
+    up()
+    goto(center_x - 45, center_y - 45)
+    down()
+    goto(center_x + 45, center_y + 45)
+    up()
+    goto(center_x - 45, center_y + 45)
+    down()
+    goto(center_x + 45, center_y - 45)
 
 def drawo(x, y):
     """Draw O player."""
@@ -25,13 +31,11 @@ def drawo(x, y):
     down()
     circle(55)
 
-
 # Crear una matriz para representar el estado del tablero
 tablero = [[' ' for _ in range(3)] for _ in range(3)]
 
 state = {'player': 0}
 players = [drawx, drawo]
-
 
 def tap(x, y):
     """Draw X or O in tapped square."""
@@ -52,7 +56,6 @@ def tap(x, y):
         state['player'] = not player
     else:
         print("Esta casilla ya está ocupada o no es válida. Elige otra.")
-
 
 setup(420, 420, 370, 0)
 hideturtle()
