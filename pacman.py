@@ -92,7 +92,7 @@ def valid(point):
 def world():
     """Draw world using path."""
     turtle.bgcolor('black')
-    path.color('blue')
+    path.color('red')
 
     for index in range(len(tiles)):
         tile = tiles[index]
@@ -151,7 +151,7 @@ def move():
 
         turtle.up()
         turtle.goto(point.x + 10, point.y + 10)
-        turtle.dot(20, 'red')
+        turtle.dot(20, 'blue')
 
     turtle.update()
 
