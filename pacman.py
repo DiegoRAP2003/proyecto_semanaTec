@@ -1,14 +1,3 @@
-"""Pacman, classic arcade game.
-
-Exercises
-
-1. Change the board.
-2. Change the number of ghosts.
-3. Change where pacman starts.
-4. Make the ghosts faster/slower.
-5. Make the ghosts smarter.
-"""
-
 from random import choice
 import turtle
 
@@ -19,7 +8,9 @@ state = {'score': 0}
 path = turtle.Turtle(visible=False)
 writer = turtle.Turtle(visible=False)
 aim = vector(5, 0)
+"""Initialization of pacman dots position"""
 pacman = vector(-40, -80)
+"""Initialization of ghosts dots position"""
 ghosts = [
     [vector(-180, 160), vector(5, 0)],
     [vector(-180, -160), vector(0, 5)],
@@ -27,6 +18,7 @@ ghosts = [
     [vector(100, -160), vector(-5, 0)],
 ]
 # fmt: off
+"""Initialization of map tiles"""
 tiles = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
