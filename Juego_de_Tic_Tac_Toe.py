@@ -1,22 +1,11 @@
-"""Tic Tac Toe
-
-Exercises
-
-1. Give the X and O a different color and width.
-2. What happens when someone taps a taken spot?
-3. How would you detect when someone has won?
-4. How could you create a computer player?
-"""
-
 from turtle import *
-
 from freegames import line
 
 
 def grid():
     """Draw tic-tac-toe grid."""
     line(-67, 200, -67, -200)
-    line(67, 100, 67, -200)
+    line(67, 200, 67, -200)
     line(-200, -67, 200, -67)
     line(-200, 67, 200, 67)
 
@@ -34,16 +23,11 @@ def drawo(x, y):
     up()
     goto(x + 67, y + 5)
     down()
-    circle(50)
+    circle(55)
 
 
-def floor(value):
-    """Round value down to grid with square size 133."""
-    return ((value + 200) // 133) * 133 - 200
-
-
-tablero = [['' for _ in range(3)] for _ in range(3)]
-
+# Crear una matriz para representar el estado del tablero
+tablero = [[' ' for _ in range(3)] for _ in range(3)]
 
 state = {'player': 0}
 players = [drawx, drawo]
@@ -51,18 +35,23 @@ players = [drawx, drawo]
 
 def tap(x, y):
     """Draw X or O in tapped square."""
-
-    x = floor(x)
-    y = floor(y)
+    x = int((x + 200) // 133)
+    y = int((y + 200) // 133)
     player = state['player']
-    if tablero[y][x] == '':
+
+    # Verificar si la casilla ya está ocupada
+    if 0 <= x < 3 and 0 <= y < 3 and tablero[y][x] == ' ':
         draw = players[player]
-        draw(x, y)
+        draw(x * 133 - 200, y * 133 - 200)
         update()
-        state['player'] = not player
+
+        # Marcar la casilla como ocupada con el jugador actual
         tablero[y][x] = 'X' if player == 0 else 'O'
+
+        # Cambiar al siguiente jugador
+        state['player'] = not player
     else:
-        print("Esta casilla ya está ocupada. Elige otra.")
+        print("Esta casilla ya está ocupada o no es válida. Elige otra.")
 
 
 setup(420, 420, 370, 0)
